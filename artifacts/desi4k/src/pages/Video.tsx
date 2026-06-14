@@ -129,14 +129,11 @@ export default function VideoPage() {
 
   return (
     <Shell>
-      {/* Toast */}
       {toast && (
         <div style={{ position: "fixed", bottom: 80, left: "50%", transform: "translateX(-50%)", background: "#1e2234", color: "#fff", padding: "10px 20px", borderRadius: 24, fontSize: 13, zIndex: 200, border: "1px solid #2a2d3a", whiteSpace: "nowrap" }}>
           {toast}
         </div>
       )}
-
-      {/* Sticky player */}
       <div style={{ position: "sticky", top: 58, zIndex: 30, background: "#000" }}>
         <video
           key={video.id}
@@ -147,51 +144,27 @@ export default function VideoPage() {
           style={{ width: "100%", aspectRatio: "16/9", display: "block", background: "#000" }}
         />
       </div>
-
       <div style={{ maxWidth: 600, margin: "0 auto" }}>
-        {/* Video info */}
         <div style={{ padding: "12px 12px 8px" }}>
           <h1 style={{ fontSize: 15, fontWeight: 600, color: "#eee", lineHeight: 1.4, marginBottom: 12 }}>{video.title}</h1>
-
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12, flexWrap: "wrap", gap: 8 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-              {/* Like */}
-              <button
-                onClick={() => handleVote("liked")}
-                disabled={voting}
-                style={{
-                  display: "inline-flex", alignItems: "center", gap: 6, padding: "7px 14px",
-                  borderRadius: 20, border: "none", cursor: "pointer", fontSize: 13, fontWeight: 600,
-                  background: currentVote === "liked" ? "#2563eb" : "#1e2234",
-                  color: currentVote === "liked" ? "#fff" : "#999",
-                  opacity: voting ? 0.6 : 1,
-                }}
-              >
+              <button onClick={() => handleVote("liked")} disabled={voting}
+                style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "7px 14px", borderRadius: 20, border: "none", cursor: "pointer", fontSize: 13, fontWeight: 600, background: currentVote === "liked" ? "#2563eb" : "#1e2234", color: currentVote === "liked" ? "#fff" : "#999", opacity: voting ? 0.6 : 1 }}>
                 <svg viewBox="0 0 24 24" style={{ width: 15, height: 15, stroke: "currentColor", fill: currentVote === "liked" ? "#fff" : "none", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" }}>
                   <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/>
                   <path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>
                 </svg>
                 {fmtNum(likes)}
               </button>
-              {/* Dislike */}
-              <button
-                onClick={() => handleVote("disliked")}
-                disabled={voting}
-                style={{
-                  display: "inline-flex", alignItems: "center", gap: 6, padding: "7px 14px",
-                  borderRadius: 20, border: "none", cursor: "pointer", fontSize: 13, fontWeight: 600,
-                  background: currentVote === "disliked" ? "#dc2626" : "#1e2234",
-                  color: currentVote === "disliked" ? "#fff" : "#999",
-                  opacity: voting ? 0.6 : 1,
-                }}
-              >
+              <button onClick={() => handleVote("disliked")} disabled={voting}
+                style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "7px 14px", borderRadius: 20, border: "none", cursor: "pointer", fontSize: 13, fontWeight: 600, background: currentVote === "disliked" ? "#dc2626" : "#1e2234", color: currentVote === "disliked" ? "#fff" : "#999", opacity: voting ? 0.6 : 1 }}>
                 <svg viewBox="0 0 24 24" style={{ width: 15, height: 15, stroke: "currentColor", fill: currentVote === "disliked" ? "#fff" : "none", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" }}>
                   <path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/>
                   <path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/>
                 </svg>
                 {fmtNum(dislikes)}
               </button>
-              {/* Views */}
               <div style={{ display: "flex", alignItems: "center", gap: 5, color: "#666", fontSize: 13, marginLeft: 4 }}>
                 <svg viewBox="0 0 24 24" style={{ width: 15, height: 15, stroke: "#666", fill: "none", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" }}>
                   <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
@@ -199,7 +172,6 @@ export default function VideoPage() {
                 {fmtNum(video.views)}
               </div>
             </div>
-            {/* Watch Later */}
             <button onClick={toggleWatchLater} style={{ display: "flex", alignItems: "center", gap: 6, background: "none", border: "none", cursor: "pointer", fontSize: 13, padding: 4, color: wlSaved ? "#f5c518" : "#777" }}>
               <svg viewBox="0 0 24 24" style={{ width: 17, height: 17, stroke: "currentColor", fill: wlSaved ? "#f5c518" : "none", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" }}>
                 <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
@@ -207,8 +179,6 @@ export default function VideoPage() {
               Watch Later
             </button>
           </div>
-
-          {/* Channel */}
           <div style={{ background: "#111320", borderRadius: 10, padding: "10px 12px", marginBottom: 10 }}>
             <div style={{ fontSize: 11, color: "#555", marginBottom: 6, textTransform: "uppercase", letterSpacing: 0.5 }}>Channel</div>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "#1a1d2a", color: "#ccc", fontSize: 13, padding: "5px 14px", borderRadius: 20, border: "1px solid #2a2d3a" }}>
@@ -218,8 +188,6 @@ export default function VideoPage() {
               {channel || "Channel"}
             </div>
           </div>
-
-          {/* Category/tags */}
           {(video.category || (video.tags && video.tags.length > 0)) && (
             <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 10 }}>
               {video.category && (
@@ -236,16 +204,10 @@ export default function VideoPage() {
               ))}
             </div>
           )}
-
-          {/* Description */}
           {video.description && (
             <div style={{ background: "#111320", borderRadius: 10, padding: "10px 12px", marginBottom: 10 }}>
               <div style={{ fontSize: 11, color: "#555", marginBottom: 6, textTransform: "uppercase", letterSpacing: 0.5 }}>Description</div>
-              <div style={{
-                fontSize: 13, color: "#bbb", lineHeight: 1.6, whiteSpace: "pre-wrap",
-                overflow: "hidden", display: "-webkit-box", WebkitBoxOrient: "vertical",
-                WebkitLineClamp: descExp ? "unset" : 3,
-              }}>{video.description}</div>
+              <div style={{ fontSize: 13, color: "#bbb", lineHeight: 1.6, whiteSpace: "pre-wrap", overflow: "hidden", display: "-webkit-box", WebkitBoxOrient: "vertical", WebkitLineClamp: descExp ? "unset" : 3 }}>{video.description}</div>
               {video.description.length > 120 && (
                 <button onClick={() => setDescExp(!descExp)} style={{ display: "flex", alignItems: "center", gap: 4, marginTop: 6, background: "none", border: "none", cursor: "pointer", color: "#f5c518", fontSize: 12, padding: 0 }}>
                   {descExp ? "Show less" : "Show more"}
@@ -257,11 +219,8 @@ export default function VideoPage() {
             </div>
           )}
         </div>
-
-        {/* Recommended */}
         {related.length > 0 && (
           <div style={{ padding: "0 12px 40px" }}>
-            <div style={{ fontSize: 11, color: "#444", marginBottom: 12, textAlign: "center", textTransform: "uppercase", letterSpacing: 1 }}>More Videos</div>
             <div style={{ fontSize: 15, fontWeight: 600, color: "#ddd", marginBottom: 12 }}>Recommended</div>
             <VideoGrid videos={related} />
           </div>
@@ -269,4 +228,4 @@ export default function VideoPage() {
       </div>
     </Shell>
   );
-}
+    }
