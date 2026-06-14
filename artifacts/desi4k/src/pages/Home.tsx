@@ -27,7 +27,9 @@ export default function Home() {
         (v.description || "").toLowerCase().includes(ql) ||
         (v.keywords || "").toLowerCase().includes(ql) ||
         (v.channel || "").toLowerCase().includes(ql) ||
-        (v.tag || "").toLowerCase().includes(ql)
+        (v.tag || "").toLowerCase().includes(ql) ||
+        (v.category || "").toLowerCase().includes(ql) ||
+        (v.tags || []).some((t) => t.toLowerCase().includes(ql))
     );
   }
 
@@ -37,22 +39,19 @@ export default function Home() {
     videos.sort((a, b) => (Number(b.createdAt) || 0) - (Number(a.createdAt) || 0));
   }
 
-  const label = q
-    ? `Search: "${q}" (${videos.length})`
-    : sort === "mostviews"
-    ? "Most Viewed Videos"
-    : "Latest Videos";
+  const label = sort === "mostviews" ? "Most Viewed Videos" : "Latest Videos";
 
   return (
     <Shell>
       <div style={{ maxWidth: 600, margin: "0 auto", padding: "10px 10px 60px" }}>
-        {q && (
+        {q ? (
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", color: "#888", fontSize: 13, marginBottom: 12, padding: "8px 10px", background: "#111320", borderRadius: 8 }}>
-            <span>Results for <strong style={{ color: "#f5c518" }}>"{q}"</strong> ({videos.length})</span>
+            <span>Results for <strong style={{ color: "#f5c518" }}>"{q}"</strong> — {videos.length} video{videos.length !== 1 ? "s" : ""}</span>
             <button onClick={() => setLocation("/")} style={{ background: "none", border: "none", color: "#555", cursor: "pointer", fontSize: 12 }}>✕ Clear</button>
           </div>
+        ) : (
+          <div style={{ fontSize: 11, fontWeight: 700, color: "#555", letterSpacing: 1, textTransform: "uppercase", padding: "12px 2px 6px" }}>{label}</div>
         )}
-        <div style={{ fontSize: 11, fontWeight: 700, color: "#555", letterSpacing: 1, textTransform: "uppercase", padding: "12px 2px 6px" }}>{label}</div>
         <VideoGrid videos={videos} isLoading={isLoading} />
       </div>
     </Shell>
