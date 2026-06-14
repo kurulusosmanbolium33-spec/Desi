@@ -1,0 +1,1 @@
+git add vercel.json && git commit -m "Add vercel.json for monorepo build" && git push
