@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import { Shell } from "@/components/layout/Shell";
 import { VideoGrid } from "@/components/video/VideoGrid";
 import { fetchVideoById, type FireVideo } from "@/lib/firestore";
@@ -52,7 +51,6 @@ export default function WatchLater() {
             </button>
           )}
         </div>
-
         {!loading && videos.length === 0 && (
           <div style={{ textAlign: "center", padding: "60px 20px", color: "#555" }}>
             <div style={{ fontSize: 44, marginBottom: 12 }}>🔖</div>
@@ -60,9 +58,8 @@ export default function WatchLater() {
             <div style={{ fontSize: 13, marginTop: 6, color: "#444" }}>Tap the bookmark icon on any video to save it here</div>
           </div>
         )}
-
         <VideoGrid videos={videos} isLoading={loading} />
       </div>
     </Shell>
   );
-}
+        }
