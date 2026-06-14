@@ -22,24 +22,14 @@ export function VideoCard({ video }: { video: FireVideo }) {
           onError={(e) => { (e.target as HTMLImageElement).src = "https://placehold.co/640x360/13162a/444?text=Video"; }}
         />
         {!!video.is4k && (
-          <div style={{
-            position: "absolute", top: 6, right: 6, background: "#f5c518", color: "#111",
-            fontSize: 10, fontWeight: 900, padding: "3px 7px", borderRadius: 4, letterSpacing: 1,
-            animation: "pulse4k 1.8s ease-in-out infinite", zIndex: 2
-          }}>4K</div>
+          <div style={{ position: "absolute", top: 6, right: 6, background: "#f5c518", color: "#111", fontSize: 10, fontWeight: 900, padding: "3px 7px", borderRadius: 4, letterSpacing: 1, animation: "pulse4k 1.8s ease-in-out infinite", zIndex: 2 }}>4K</div>
         )}
         {video.duration && (
-          <div style={{
-            position: "absolute", bottom: 6, right: 6, background: "rgba(0,0,0,.85)",
-            color: "#fff", fontSize: 12, fontWeight: 700, padding: "3px 8px", borderRadius: 5, zIndex: 2
-          }}>{video.duration}</div>
+          <div style={{ position: "absolute", bottom: 6, right: 6, background: "rgba(0,0,0,.85)", color: "#fff", fontSize: 12, fontWeight: 700, padding: "3px 8px", borderRadius: 5, zIndex: 2 }}>{video.duration}</div>
         )}
       </div>
       <div style={{ padding: "8px 2px 2px" }}>
-        <div style={{
-          fontSize: 14, fontWeight: 500, color: "#e8e8e8", lineHeight: 1.35,
-          display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden", marginBottom: 6
-        }}>{video.title}</div>
+        <div style={{ fontSize: 14, fontWeight: 500, color: "#e8e8e8", lineHeight: 1.35, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden", marginBottom: 6 }}>{video.title}</div>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 4, background: "#13162a", color: "#999", fontSize: 11, padding: "3px 10px", borderRadius: 12, border: "1px solid #1e2234" }}>
             <svg viewBox="0 0 24 24" style={{ width: 11, height: 11, stroke: "#666", fill: "none", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" }}>
