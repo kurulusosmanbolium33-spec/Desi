@@ -1,1 +1,14 @@
-git add vercel.json && git commit -m "Add vercel.json for monorepo build" && git push
+{
+  "buildCommand": "pnpm --filter @workspace/desi4k run build",
+  "outputDirectory": "artifacts/desi4k/dist/public",
+  "installCommand": "corepack enable && corepack prepare pnpm@10.26.1 --activate && pnpm install",
+  "framework": null,
+  "env": {
+    "BASE_PATH": "/"
+  },
+  "build": {
+    "env": {
+      "BASE_PATH": "/"
+    }
+  }
+}
